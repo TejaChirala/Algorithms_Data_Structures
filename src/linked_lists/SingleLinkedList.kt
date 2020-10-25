@@ -1,5 +1,4 @@
-import java.lang.Exception
-import java.util.*
+package linked_lists
 
 class SingleLinkedList {
 
@@ -142,6 +141,22 @@ class SingleLinkedList {
         println("${first?.value} ${first?.tail?.value} ${last?.value} ${last?.tail?.value}")
     }
 
+    fun removeDuplicates() {
+        var currentNode = first
+        while (currentNode != null) {
+            var runnerNode = currentNode
+            while (runnerNode?.tail != null) {
+                if (currentNode.value == runnerNode.tail?.value) {
+                    runnerNode.tail = runnerNode.tail?.tail
+                    size--
+                } else {
+                    runnerNode = runnerNode.tail
+                }
+            }
+            currentNode = currentNode.tail
+        }
+    }
+
 }
 
 fun main() {
@@ -152,6 +167,17 @@ fun main() {
         addAt(1,"b")
         addToLast("d")
         addAt(2, "x")
+        print()
+    }
+    println("-------------------------------")
+    val duplicatesSLL = SingleLinkedList()
+    duplicatesSLL.apply {
+        addToFirst(1)
+        addToLast(1)
+        addToLast(3)
+        addToLast(2)
+        print()
+        removeDuplicates()
         print()
     }
 
