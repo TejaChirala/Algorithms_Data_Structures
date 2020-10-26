@@ -13,6 +13,7 @@ import kotlin.math.min
  * pale. bale -> true
  * pale. bake -> false
  **/
+@ExperimentalStdlibApi
 class OneAway {
 
     fun isOneAway(parent: String, child: String): Boolean {
@@ -86,6 +87,7 @@ class OneAway {
 
 }
 
+@ExperimentalStdlibApi
 fun main() {
 
     OneAway().apply {
