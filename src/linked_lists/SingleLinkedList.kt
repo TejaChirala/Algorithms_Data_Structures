@@ -157,6 +157,84 @@ class SingleLinkedList {
         }
     }
 
+    // GET VALUE FROM LAST START
+
+    /**
+     * This function returns value based on the position from the end of the list
+     **/
+    fun getValueFromLast(position: Int): Any? {
+        val positionFromStart = size - position
+        checkPosition(positionFromStart)
+        return getValueAt(positionFromStart)
+    }
+
+    fun getValueFromLastSizeUnknown(position: Int): Int {
+        return getValueFromLastSizeUnknown(
+                position,
+                IndexNode(0, null),
+                first
+        ).resultNode?.value as Int? ?: throw Exception("Invalid Position")
+    }
+
+    /**
+     * This function returns value based on the position from the end of the list when SIZE IS UNKNOWN
+     **/
+    private fun getValueFromLastSizeUnknown(position: Int, indexNode: IndexNode, currentNode: Node?): IndexNode {
+        if (currentNode?.tail == null) {
+            return indexNode.apply {
+                index = 1
+                if (position == 1) {
+                    resultNode = currentNode
+                }
+            }
+        }
+
+        val valueNode = getValueFromLastSizeUnknown(
+                position,
+                indexNode,
+                currentNode.tail
+        ).apply { index++ }
+
+        return if (valueNode.index == position) {
+            valueNode.apply {
+                resultNode = currentNode
+            }
+        } else {
+            valueNode
+        }
+    }
+
+    private data class IndexNode(var index: Int, var resultNode: Node?)
+
+    fun getValueFromLastIteration(position: Int): Int {
+        return getValueFromLastIteration(position - 1, first) ?: -1
+    }
+
+    private fun getValueFromLastIteration(position: Int, node: Node?): Int? {
+
+        if (position < 1)
+            return -1
+
+        var current = node
+        var runner = node
+
+        //First we move the runner to {position} number of nodes
+        repeat(position) {
+            runner = runner?.tail
+        }
+
+        if (runner == null)
+            return -1
+
+        while (runner?.tail != null) {
+            runner = runner?.tail
+            current = current?.tail
+        }
+        return current?.value as Int?
+    }
+
+    // GET VALUE FROM LAST END
+
 }
 
 fun main() {
@@ -164,7 +242,7 @@ fun main() {
     sll.apply {
         addToFirst("c")
         addAt(0, "a")
-        addAt(1,"b")
+        addAt(1, "b")
         addToLast("d")
         addAt(2, "x")
         print()
@@ -179,6 +257,9 @@ fun main() {
         print()
         removeDuplicates()
         print()
+        println(getValueFromLast(1))
+        println(getValueFromLastSizeUnknown(1))
+        println(getValueFromLastIteration(4))
     }
 
 
