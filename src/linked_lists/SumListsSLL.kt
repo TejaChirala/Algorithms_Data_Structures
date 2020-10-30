@@ -53,6 +53,16 @@ class SumListsSLL {
         println("")
     }
 
+    fun getLength(firstNode: Node?): Int {
+        var length = 0
+        var node = firstNode
+        while (node != null) {
+            length++
+            node = node.next
+        }
+        return length
+    }
+
     fun getSumOfListsReverse(list1Node: Node?, list2Node: Node?): Node? {
         var firstNode1 = list1Node
         var firstNode2 = list2Node
@@ -88,7 +98,18 @@ class SumListsSLL {
 
     data class CarryNode(val carry: Int, val node: Node?)
 
-    fun getSumOfLists(list1Node: Node?, list2Node: Node?): CarryNode? {
+    fun getSumOfLists(l1Node: Node?, l2Node: Node?): CarryNode? {
+        var list1Node = l1Node
+        var list2Node = l2Node
+        val length1 = getLength(list1Node)
+        val length2 = getLength(list2Node)
+
+        if (length1 > length2) {
+            list2Node = appendZerosAtStart(length1 - length2, list2Node)
+        } else if (length2 > length1) {
+            list1Node = appendZerosAtStart(length2 - length1, list1Node)
+        }
+
         val carryNode = getSumOfListsDirect(list1Node, list2Node)
         if (carryNode?.carry ?: 0 > 0) {
             val newCarryNode = getCarryNode(carryNode!!.carry)
@@ -96,6 +117,14 @@ class SumListsSLL {
             return newCarryNode
         }
         return carryNode
+    }
+
+    private fun appendZerosAtStart(noOfZeroes: Int, headNode: Node?): Node? {
+        var head: Node? = headNode
+        repeat(noOfZeroes) {
+            head = Node(0, head)
+        }
+        return head
     }
 
     private fun getSumOfListsDirect(list1Node: Node?, list2Node: Node?): CarryNode? {
@@ -151,6 +180,7 @@ fun main() {
 
     val list3 = SumListsSLL().apply {
         addToFirst(9)
+        addToLast(9)
         addToLast(9)
         addToLast(9)
         print()
