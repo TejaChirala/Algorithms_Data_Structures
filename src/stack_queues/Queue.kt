@@ -1,5 +1,7 @@
 package stack_queues
 
+import extensions.print
+
 class Queue<T> {
 
     private data class QueueNode<T>(var data: T, var next: QueueNode<T>? = null)
@@ -47,6 +49,11 @@ class Queue<T> {
 
 fun main() {
     Queue<Int>().apply {
-
+        isEmpty().print()
+        add(1)
+        add(2)
+        remove().print()
+        remove().print()
+        isEmpty().print()
     }
 }
