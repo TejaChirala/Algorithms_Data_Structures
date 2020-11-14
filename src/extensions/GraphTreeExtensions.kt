@@ -26,3 +26,10 @@ fun getTree(): TreeNode {
     val leafNode3 = TreeNode(3, leafNode6, leafNode7)
     return TreeNode(1, leafNode2, leafNode3)
 }
+
+fun getUnbalancedTree(): TreeNode {
+    val leafNode4 = TreeNode(4)
+    val leafNode3 = TreeNode(3)
+    val leafNode2 = TreeNode(2, leafNode3, leafNode4)
+    return TreeNode(1, leafNode2, null)
+}
