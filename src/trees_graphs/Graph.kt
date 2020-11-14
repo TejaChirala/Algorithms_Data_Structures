@@ -12,6 +12,8 @@ class Graph<T>(var node: GraphNode<T>)
 
 class TreeNode<T>(var name: T, var left: TreeNode<T>? = null, var right: TreeNode<T>? = null)
 
+class ParentTreeNode<T>(var name: T, var parent: ParentTreeNode<T>? = null, var left: ParentTreeNode<T>? = null, var right: ParentTreeNode<T>? = null)
+
 class Tree<T>(var node: TreeNode<T>)
 
 fun inOrderTraversal(node: TreeNode<Int>?) {
