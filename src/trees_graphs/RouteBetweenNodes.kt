@@ -4,6 +4,10 @@ import extensions.getGraph
 import extensions.print
 import stack_queues.Queue
 
+/**
+ * Route Between Nodes: Given a directed graph, design an algorithm to find out whether there is a
+ * route between two nodes.
+ **/
 class RouteBetweenNodes {
 
     fun isRouteExists(source: GraphNode, destination: GraphNode): Boolean {
