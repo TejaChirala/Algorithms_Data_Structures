@@ -16,9 +16,9 @@ class ValidateBST {
 
         val leftNodeValue = node.left?.name
         val rightNodeValue = node.right?.name
-        val isValueGreaterThanLeft = leftNodeValue == null || leftNodeValue < node.name
+        val isValueGreaterThanOrEqualToLeft = leftNodeValue == null || leftNodeValue <= node.name
         val isValueLessThanRight = rightNodeValue == null || rightNodeValue > node.name
-        return isValueGreaterThanLeft
+        return isValueGreaterThanOrEqualToLeft
                 && isValueLessThanRight
                 && isBinarySearchTree(node.left)
                 && isBinarySearchTree(node.right)
