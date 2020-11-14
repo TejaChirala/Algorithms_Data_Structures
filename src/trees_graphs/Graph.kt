@@ -6,15 +6,15 @@ import extensions.print
 import linked_lists.printLine
 import stack_queues.Queue
 
-class GraphNode(var name: Any, var visited: Boolean = false, var adjacent: ArrayList<GraphNode> = ArrayList())
+class GraphNode<T>(var name: T, var visited: Boolean = false, var adjacent: ArrayList<GraphNode<T>> = ArrayList())
 
-class Graph(var node: GraphNode)
+class Graph<T>(var node: GraphNode<T>)
 
-class TreeNode(var name: Any, var left: TreeNode? = null, var right: TreeNode? = null)
+class TreeNode<T>(var name: T, var left: TreeNode<T>? = null, var right: TreeNode<T>? = null)
 
-class Tree(var node: TreeNode)
+class Tree<T>(var node: TreeNode<T>)
 
-fun inOrderTraversal(node: TreeNode?) {
+fun inOrderTraversal(node: TreeNode<Int>?) {
     node?.apply {
         inOrderTraversal(node.left)
         print("$name ")
@@ -22,7 +22,7 @@ fun inOrderTraversal(node: TreeNode?) {
     }
 }
 
-fun preOrderTraversal(node: TreeNode?) {
+fun preOrderTraversal(node: TreeNode<Int>?) {
     node?.apply {
         print("$name ")
         preOrderTraversal(node.left)
@@ -30,7 +30,7 @@ fun preOrderTraversal(node: TreeNode?) {
     }
 }
 
-fun postOrderTraversal(node: TreeNode?) {
+fun postOrderTraversal(node: TreeNode<Int>?) {
     node?.apply {
         postOrderTraversal(node.left)
         postOrderTraversal(node.right)
@@ -38,25 +38,23 @@ fun postOrderTraversal(node: TreeNode?) {
     }
 }
 
-fun depthFirstSearch(node: GraphNode?) {
+fun depthFirstSearch(node: GraphNode<Int>?) {
     node?.apply {
         visited = true
         print("$name ")
-        if (adjacent != null) {
-            for (n in adjacent!!) {
-                if (n?.visited == false) {
-                    depthFirstSearch(n)
-                }
+        for (n in adjacent) {
+            if (!n.visited) {
+                depthFirstSearch(n)
             }
         }
     }
 }
 
-fun breadthFirstSearch(node: GraphNode?) {
+fun breadthFirstSearch(node: GraphNode<Int>?) {
     if (node == null)
         return
 
-    val queue = Queue<GraphNode?>()
+    val queue = Queue<GraphNode<Int>?>()
     queue.add(node)
 
     while (!queue.isEmpty()) {
@@ -65,7 +63,7 @@ fun breadthFirstSearch(node: GraphNode?) {
         print("${currentNode?.name} ")
 
         if (currentNode?.adjacent != null) {
-            for (n in currentNode.adjacent!!) {
+            for (n in currentNode.adjacent) {
                 if (!n.visited) {
                     n.visited = true
                     queue.add(n)

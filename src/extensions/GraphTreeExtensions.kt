@@ -3,7 +3,7 @@ package extensions
 import trees_graphs.GraphNode
 import trees_graphs.TreeNode
 
-fun getGraph(): GraphNode {
+fun getGraph(): GraphNode<Int> {
     val node5 = GraphNode(5)
     val node4 = GraphNode(4)
     val node3 = GraphNode(3)
@@ -17,7 +17,7 @@ fun getGraph(): GraphNode {
     return node0
 }
 
-fun getTree(): TreeNode {
+fun getTree(): TreeNode<Int> {
     val leafNode4 = TreeNode(4, null, null)
     val leafNode5 = TreeNode(5, null, null)
     val leafNode6 = TreeNode(6, null, null)
@@ -27,7 +27,7 @@ fun getTree(): TreeNode {
     return TreeNode(1, leafNode2, leafNode3)
 }
 
-fun getUnbalancedTree(): TreeNode {
+fun getUnbalancedTree(): TreeNode<Int> {
     val leafNode4 = TreeNode(4)
     val leafNode3 = TreeNode(3)
     val leafNode2 = TreeNode(2, leafNode3, leafNode4)
