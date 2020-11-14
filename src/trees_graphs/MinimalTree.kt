@@ -8,7 +8,7 @@ import extensions.print
  **/
 class MinimalTree {
 
-    fun makeMinHeightBinarySearchTree(sortedArray: IntArray, startIndex: Int, endIndex: Int): TreeNode? {
+    fun makeMinHeightBinarySearchTree(sortedArray: IntArray, startIndex: Int, endIndex: Int): TreeNode<Int>? {
 
         if (endIndex < startIndex) {
             return null

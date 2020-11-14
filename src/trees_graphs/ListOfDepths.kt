@@ -12,9 +12,9 @@ import kotlin.collections.ArrayList
  **/
 class ListOfDepths {
 
-    fun getDepthLinkedLists(rootNode: TreeNode): ArrayList<LinkedList<TreeNode>> {
-        val list = ArrayList<LinkedList<TreeNode>>()
-        val queue = Queue<Pair<Int, TreeNode>>()
+    fun getDepthLinkedLists(rootNode: TreeNode<Int>): ArrayList<LinkedList<TreeNode<Int>>> {
+        val list = ArrayList<LinkedList<TreeNode<Int>>>()
+        val queue = Queue<Pair<Int, TreeNode<Int>>>()
         queue.add(Pair(0, rootNode))
 
         while (!queue.isEmpty()) {

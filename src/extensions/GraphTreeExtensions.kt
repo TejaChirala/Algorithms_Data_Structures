@@ -18,18 +18,26 @@ fun getGraph(): GraphNode<Int> {
 }
 
 fun getTree(): TreeNode<Int> {
-    val leafNode4 = TreeNode(4, null, null)
-    val leafNode5 = TreeNode(5, null, null)
-    val leafNode6 = TreeNode(6, null, null)
-    val leafNode7 = TreeNode(7, null, null)
-    val leafNode2 = TreeNode(2, leafNode4, leafNode5)
-    val leafNode3 = TreeNode(3, leafNode6, leafNode7)
-    return TreeNode(1, leafNode2, leafNode3)
+    val node4 = TreeNode(4, null, null)
+    val node5 = TreeNode(5, null, null)
+    val node6 = TreeNode(6, null, null)
+    val node7 = TreeNode(7, null, null)
+    val node2 = TreeNode(2, node4, node5)
+    val node3 = TreeNode(3, node6, node7)
+    return TreeNode(1, node2, node3)
 }
 
 fun getUnbalancedTree(): TreeNode<Int> {
-    val leafNode4 = TreeNode(4)
-    val leafNode3 = TreeNode(3)
-    val leafNode2 = TreeNode(2, leafNode3, leafNode4)
-    return TreeNode(1, leafNode2, null)
+    val node4 = TreeNode(4)
+    val node3 = TreeNode(3)
+    val node2 = TreeNode(2, node3, node4)
+    return TreeNode(1, node2, null)
+}
+
+fun getBinarySearchTree(): TreeNode<Int> {
+    val node8 = TreeNode(8)
+    val node5 = TreeNode(5)
+    val node17 = TreeNode(17)
+    val node7 = TreeNode(7, node5, node8)
+    return TreeNode(10, node7, node17)
 }

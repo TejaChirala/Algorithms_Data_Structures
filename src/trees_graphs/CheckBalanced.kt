@@ -13,11 +13,11 @@ import kotlin.math.max
  **/
 class CheckBalanced {
 
-    fun isBalancedBinaryTree(node: TreeNode?): Boolean {
+    fun isBalancedBinaryTree(node: TreeNode<Int>?): Boolean {
         return getHeight(node) != Int.MIN_VALUE
     }
 
-    private fun getHeight(node: TreeNode?): Int {
+    private fun getHeight(node: TreeNode<Int>?): Int {
         if (node == null) {
             return -1
         }

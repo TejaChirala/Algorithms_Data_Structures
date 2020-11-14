@@ -10,9 +10,9 @@ import stack_queues.Queue
  **/
 class RouteBetweenNodes {
 
-    fun isRouteExists(source: GraphNode, destination: GraphNode): Boolean {
+    fun isRouteExists(source: GraphNode<Int>, destination: GraphNode<Int>): Boolean {
 
-        val queue = Queue<GraphNode>()
+        val queue = Queue<GraphNode<Int>>()
         queue.add(source)
         source.visited = true
 
