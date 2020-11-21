@@ -19,3 +19,7 @@ fun String.print() {
 fun Any?.print() {
     println(toString())
 }
+
+fun printNull() {
+    println("null")
+}
