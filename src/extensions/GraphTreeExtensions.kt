@@ -41,3 +41,9 @@ fun getBinarySearchTree(): TreeNode<Int> {
     val node7 = TreeNode(7, node5, node8)
     return TreeNode(10, node7, node17)
 }
+
+fun getRightSidedTree(): TreeNode<Int> {
+    val node3 = TreeNode(3, null, null)
+    val node2 = TreeNode(2, null, node3)
+    return TreeNode(1, null, node2)
+}
