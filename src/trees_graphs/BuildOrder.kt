@@ -1,5 +1,6 @@
 package trees_graphs
 
+import extensions.printNull
 import stack_queues.Queue
 
 /**
@@ -74,7 +75,7 @@ fun main() {
         )
         result?.forEach {
             print("$it ")
-        } ?: "null"
+        } ?: printNull()
     }
 
 }
