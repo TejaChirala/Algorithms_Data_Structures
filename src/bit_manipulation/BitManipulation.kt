@@ -1,6 +1,8 @@
 package bit_manipulation
 
 import extensions.print
+import java.lang.Exception
+import java.lang.StringBuilder
 
 class BitManipulation {
 
@@ -49,6 +51,22 @@ class BitManipulation {
         return number and ((1 shl index) - 1) or (bit shl index)
     }
 
+    /**
+     * A function to convert a positive integer to a binary string
+     **/
+    fun getBinaryCode(number: Int): String {
+        if (number < 0) {
+            throw Exception("Invalid number")
+        }
+        var num = number
+        val builder = StringBuilder()
+        while (num > 0) {
+            builder.insert(0, num % 2)
+            num /= 2
+        }
+        return builder.toString()
+    }
+
 }
 
 fun main() {
@@ -66,6 +84,9 @@ fun main() {
         clearIThrough0(31, 3).print()
         updateBit(1, 0, false).print()
         updateBit(0, 0, true).print()
+        getBinaryCode(13).print()
+        getBinaryCode(1775).print()
+        getBinaryCode(1).print()
     }
 
 }
