@@ -8,13 +8,26 @@ import extensions.print
  **/
 class PermutationsWithOutDuplicates {
 
+    /**
+     * This function takes O(n!) where n is no.of characters
+     * */
     fun getPermutations(s: String): ArrayList<String> {
-        return getPermutations(s.toSet())
+        return getPermutations(s.toMap())
     }
 
-    private fun getPermutations(set: Set<Char>): ArrayList<String> {
+    private fun String.toMap(): HashMap<Char, Int> {
+        val map = HashMap<Char, Int>()
+        this.forEach {
+            if (!map.containsKey(it)) {
+                map[it] = 0
+            }
+        }
+        return map
+    }
+
+    private fun getPermutations(map: HashMap<Char, Int>): ArrayList<String> {
         var list = ArrayList<String>()
-        set.forEach {
+        map.keys.forEach {
             if (list.isEmpty()) {
                 list.add(it.toString())
             } else {
@@ -38,6 +51,6 @@ class PermutationsWithOutDuplicates {
 
 fun main() {
     PermutationsWithOutDuplicates().apply {
-        getPermutations("abbcccc").print()
+        getPermutations("abbccccd").print()
     }
 }
