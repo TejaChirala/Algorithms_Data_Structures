@@ -1,6 +1,7 @@
 package dynamic_programming
 
 import extensions.print
+
 /**
  * Robot in a Grid: Imagine a robot sitting on the upper left corner of grid with r rows and c columns.
  * The robot can only move in two directions, right and down, but certain cells are "off limits" such that
@@ -15,23 +16,27 @@ class RobotInAGrid {
     }
 
     fun findPath(a: Array<BooleanArray>, columns: Int): String? {
-        return findPath(a, "", 0, 0, a.size, columns).path
+        return findPath(a, "", 0, 0, a.size, columns, hashSetOf()).path
     }
 
-    private fun findPath(a: Array<BooleanArray>, path: String, x: Int, y: Int, rows: Int, columns: Int): Result {
-        print("($y,$x)")
+    private fun findPath(a: Array<BooleanArray>, path: String, x: Int, y: Int, rows: Int, columns: Int, hashSet: HashSet<Pair<Int, Int>>): Result {
+        val pair = Pair(y, x)
+        if (hashSet.contains(pair)) {
+            return Result(null, false)
+        }
+        hashSet.add(pair)
         when {
             (y == rows - 1 && x == columns - 1) -> return Result(path, true)
             (y > rows - 1 || x > columns - 1) -> return Result(null, false)
             !a[y][x] -> return Result(null, false)
         }
 
-        val resultRight = findPath(a, path = path + R, x + 1, y, rows, columns)
+        val resultRight = findPath(a, path = path + R, x + 1, y, rows, columns, hashSet)
         if (resultRight.path != null && resultRight.isSuccess) {
             return resultRight
         }
 
-        val resultBottom = findPath(a, path = path + B, x, y + 1, rows, columns)
+        val resultBottom = findPath(a, path = path + B, x, y + 1, rows, columns, hashSet)
         if (resultBottom.path != null && resultBottom.isSuccess) {
             return resultBottom
         }
@@ -46,6 +51,12 @@ class RobotInAGrid {
 fun main() {
 
     RobotInAGrid().apply {
+        findPath(arrayOf(
+                booleanArrayOf(true, true, false, false),
+                booleanArrayOf(true, true, false, false),
+                booleanArrayOf(false, true, false, true),
+                booleanArrayOf(false, true, false, true)
+        ), 4).print()
         findPath(arrayOf(
                 booleanArrayOf(true, false, true, false),
                 booleanArrayOf(true, true, false, false),
