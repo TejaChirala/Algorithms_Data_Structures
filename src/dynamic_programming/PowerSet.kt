@@ -2,6 +2,9 @@ package dynamic_programming
 
 import extensions.print
 
+/**
+ * Power Set: Write a method to return all subsets of a set.
+ **/
 class PowerSet {
 
     fun getPowerSet(set: Set<Int>): ArrayList<ArrayList<Int>> {
