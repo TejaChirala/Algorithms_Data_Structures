@@ -1,5 +1,7 @@
 package extensions
 
+import dynamic_programming.PaintFill
+
 fun Boolean.print() {
     println(toString())
 }
@@ -22,4 +24,28 @@ fun Any?.print() {
 
 fun printNull() {
     println("null")
+}
+
+fun Array<Array<Int>>.print() {
+
+    forEach { array ->
+        array.forEach {
+            print("$it ")
+        }
+        println("")
+    }
+    println("-----------------------------")
+
+}
+
+fun Array<Array<PaintFill.Color>>.print() {
+
+    forEach { array ->
+        array.forEach {
+            print("$it ")
+        }
+        println("")
+    }
+    println("-----------------------------")
+
 }
