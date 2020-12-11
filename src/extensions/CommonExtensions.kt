@@ -49,3 +49,10 @@ fun Array<Array<PaintFill.Color>>.print() {
     println("-----------------------------")
 
 }
+
+fun IntArray.print() {
+    forEach {
+        print("$it ")
+    }
+    println()
+}
