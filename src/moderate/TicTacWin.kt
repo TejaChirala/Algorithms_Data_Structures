@@ -143,5 +143,14 @@ fun main() {
                         arrayOf(x, o, x, o)
                 )
         ).print()
+
+        checkIfWonNXN(
+                arrayOf(
+                        arrayOf(o, o, x, x),
+                        arrayOf(x, o, x, x),
+                        arrayOf(o, x, o, o),
+                        arrayOf(o, o, x, x)
+                )
+        ).print()
     }
 }
