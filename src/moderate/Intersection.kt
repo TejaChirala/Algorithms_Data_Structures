@@ -1,7 +1,9 @@
 package moderate
 
-import extensions.print
-
+/**
+ * Intersection: Given two straight line segments (represented as a start point and an end point),
+ * compute the point of intersection, if any.
+ **/
 class Intersection {
 
     //@see https://www.geeksforgeeks.org/program-for-point-of-intersection-of-two-lines/
