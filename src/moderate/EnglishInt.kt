@@ -3,6 +3,10 @@ package moderate
 import extensions.print
 import java.util.*
 
+/**
+ * English Int: Given any integer, print an English phrase that describes the integer (e.g., "One Thousand,
+ * Two Hundred Thirty Four").
+ **/
 class EnglishInt {
 
     private val negative = "negative"
