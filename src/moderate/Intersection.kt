@@ -1,5 +1,7 @@
 package moderate
 
+import linked_lists.printLine
+
 /**
  * Intersection: Given two straight line segments (represented as a start point and an end point),
  * compute the point of intersection, if any.
@@ -7,7 +9,82 @@ package moderate
 class Intersection {
 
     //@see https://www.geeksforgeeks.org/program-for-point-of-intersection-of-two-lines/
+    //@see https://byjus.com/point-of-intersection-formula/#:~:text=Point%20of%20intersection%20means%20the,c2%20%3D%200%2C%20respectively.
     //For further details
+    fun getIntersectionEquationDet(start1: Point, end1: Point, start2: Point, end2: Point): Point? {
+
+        if (start1.x > end1.x) swap(start1, end1)
+        if (start2.x > end2.x) swap(start2, end2)
+        if (start1.x > start2.x) {
+            swap(start1, start2)
+            swap(end1, end2)
+        }
+        val line1 = LineE(start1, end1)
+        val line2 = LineE(start2, end2)
+
+        //equation is a1x+b1y = c1
+        val a1 = line1.a
+        val b1 = line1.b
+        val c1 = line1.c
+
+        //equation is a2x+b2y = c2
+        val a2 = line2.a
+        val b2 = line2.b
+        val c2 = line2.c
+
+        val determinant = a1 * b2 - a2 * b1
+
+        //Lines are parallel
+        if (determinant == 0.0) {
+            return if (isBetween(start1, start2, end1)) start2 else null
+        }
+
+        val x = (b2 * c1 - b1 * c2) / determinant
+        val y = (a1 * c2 - a2 * c1) / determinant
+        val intersection = Point(x, y)
+
+        return if (isBetween(start1, intersection, end1) && isBetween(start2, intersection, end2)) {
+            intersection
+        } else {
+            null
+        }
+
+    }
+
+    class LineE(val start: Point, val end: Point) {
+
+        val a: Double
+        val b: Double
+        val c: Double
+
+        init {
+
+            when {
+                start.x == end.x -> {
+                    a = 1.0
+                    b = 0.0
+                    c = start.x
+                }
+                start.y == end.y -> {
+                    a = 0.0
+                    b = 1.0
+                    c = start.y
+                }
+                else -> {
+                    val deltaY = end.y - start.y
+                    val deltaX = end.x - start.x
+
+                    // y = mx + b
+                    // mx - y = -b => a = m, b = -1, c = -b
+                    a = deltaY / deltaX
+                    b = -1.0
+                    c = (end.y - (a * end.x)) * -1
+                }
+            }
+        }
+
+    }
+    
     fun getIntersectionDet(start1: Point, end1: Point, start2: Point, end2: Point): Point? {
 
         if (start1.x > end1.x) swap(start1, end1)
@@ -152,6 +229,34 @@ fun main() {
                 start2 = Intersection.Point(4.0, 4.0),
                 end2 = Intersection.Point(10.0, 4.0)
         )?.print()
+
+        printLine()
+
+        getIntersectionEquationDet(
+                start1 = Intersection.Point(1.0, 4.0),
+                end1 = Intersection.Point(6.0, 4.0),
+                start2 = Intersection.Point(3.0, 3.0),
+                end2 = Intersection.Point(3.0, 6.0)
+        )?.print() ?: print("null")
+        getIntersectionEquationDet(
+                start1 = Intersection.Point(1.0, 4.0),
+                end1 = Intersection.Point(6.0, 4.0),
+                start2 = Intersection.Point(3.0, 4.0),
+                end2 = Intersection.Point(3.0, 6.0)
+        )?.print() ?: print("null")
+        getIntersectionEquationDet(
+                start1 = Intersection.Point(1.0, 4.0),
+                end1 = Intersection.Point(6.0, 4.0),
+                start2 = Intersection.Point(4.0, 4.0),
+                end2 = Intersection.Point(10.0, 4.0)
+        )?.print() ?: print("null")
+
+        getIntersectionEquationDet(
+                start1 = Intersection.Point(1.0, 4.0),
+                end1 = Intersection.Point(6.0, 4.0),
+                start2 = Intersection.Point(2.0, 3.0),
+                end2 = Intersection.Point(4.0, 5.0)
+        )?.print() ?: print("null")
     }
 
 }
