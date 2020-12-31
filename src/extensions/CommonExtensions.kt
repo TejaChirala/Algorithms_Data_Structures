@@ -56,3 +56,10 @@ fun IntArray.print() {
     }
     println()
 }
+
+fun Array<Int>.print() {
+    forEach {
+        print("$it ")
+    }
+    println()
+}
