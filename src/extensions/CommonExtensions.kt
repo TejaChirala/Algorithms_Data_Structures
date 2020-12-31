@@ -63,3 +63,5 @@ fun Array<Int>.print() {
     }
     println()
 }
+
+fun Int.toBinaryString() = Integer.toBinaryString(this)
