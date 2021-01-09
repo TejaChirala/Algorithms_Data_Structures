@@ -10,7 +10,12 @@ class MultiSearch {
 
         val map = HashMap<String, ArrayList<Int>>()
         val trie = Trie()
-        T.forEach { trie.insert(it) }
+        val maxLength = b.length
+        T.forEach {
+            if (it.length <= maxLength) {
+                trie.insert(it)
+            }
+        }
         for (i in b.indices) {
             val strings: ArrayList<String> = getStringsAtIndex(b, trie, i)
             addStringsToMap(strings, map, i)
