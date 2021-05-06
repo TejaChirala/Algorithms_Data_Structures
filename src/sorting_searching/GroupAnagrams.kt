@@ -18,7 +18,7 @@ class GroupAnagrams {
 
             val s = it.toCharArray()
             Arrays.sort(s)
-            if (map.containsKey(s)) {
+            if (map.containsKey(s.toString())) {
                 map[s.toString()]!!.add(it)
             } else {
                 map[s.toString()] = ArrayList<String>().apply { add(it) }
