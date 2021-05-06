@@ -7,7 +7,7 @@ package arrays_strings
  *  EXAMPLE
  *  Input: Tact Coa
  *  Output: True (permutations: "taco cat". "atco cta". etc.)
- * */
+ **/
 class PalindromePermutation {
 
     fun isPalindrome(string: String): Boolean {
@@ -42,6 +42,12 @@ fun main() {
         println(isPalindrome("eee"))
         println(isPalindrome("etete"))
         println(isPalindrome("1"))
+
+        val count = if (true) {
+           2
+        } else {
+            2
+        }
 
     }
 }

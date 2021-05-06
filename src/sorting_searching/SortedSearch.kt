@@ -1,6 +1,8 @@
 package sorting_searching
 
 import extensions.print
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Sorted Search, No Size: You are given an array-like data structure Listy which lacks a size
@@ -17,6 +19,9 @@ class SortedSearch {
         while (listy.getElementAt(index) != -1 && listy.getElementAt(index) < value) {
             index *= 2
         }
+        ArrayList<IntArray>().toTypedArray()
+        LinkedList<Int>().toArray()
+        val a = ArrayList<Int>().toArray()
         return binarySearch(listy, value, index / 2, index)
 
     }

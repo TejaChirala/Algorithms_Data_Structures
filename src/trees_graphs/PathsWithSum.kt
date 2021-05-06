@@ -1,6 +1,8 @@
 package trees_graphs
 
 import extensions.print
+import java.util.*
+import kotlin.collections.HashMap
 
 /**
  * Paths with Sum: You are given a binary tree in which each node contains an integer value (which
@@ -9,8 +11,14 @@ import extensions.print
  * (traveling only from parent nodes to child nodes).
  **/
 class PathsWithSum {
+    val numArray = Array<ArrayList<String>>(10) {ArrayList<String>()}
+    init {
+        numArray[1] = arrayListOf<String>("a", "b", "c")
+
+    }
 
     fun getPathsWithSumCount(node: TreeNode<Int>?, requiredSum: Int): Int {
+
         if (node == null) return 0
         val map = HashMap<Int, Int>().apply { put(0, 1) }
         return findPathCount(node, map, requiredSum, 0)
@@ -49,6 +57,8 @@ class PathsWithSum {
     }
 
 }
+
+data class WordPath(val word: String, val pathToWord: ArrayList<String> = ArrayList<String>().apply{add(word)})
 
 fun main() {
     PathsWithSum().apply {

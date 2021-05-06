@@ -10,7 +10,7 @@ import kotlin.math.min
  * volume of water it could hold if someone poured water across the top. You can assume that each
  * histogram bar has width 1.
  * EXAMPLE (Black bars are the histogram. Gray is water.)
- * Input:{e, 13, 4, 13, 13, 6, 13, 13, 3, 13, 5, 13, 1, 13, 13, e}
+ * Input: {0, 0, 4, 0, 0, 6, 0, 0, 3, 0, 5, 0, 1, 0, 0, 0}
  **/
 class VolumeOfHistogram {
 

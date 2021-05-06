@@ -9,11 +9,21 @@ import extensions.print
  * */
 class CoinsChangeWays {
 
+    fun f(vararg s: String) {
+
+    }
+    
+    class EMPTY
+
     fun getWays(num: Int, d: Array<Int>): Int {
 
+        listOf(1,2).s
+        "".toInt()
         val array = Array(num + 1) {
             if (it == 0) 1 else 0
         }
+        "s".split("")
+        "".length
 
         d.forEach { denom ->
 
